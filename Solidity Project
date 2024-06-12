@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.26;
+
+contract Mytoken{
+
+  string public name ="COPPER";
+  string public symbol = "CPR";
+  uint public totalsupply =0;
+
+//mapping
+mapping (address => uint) public balances;
+
+//mintfunction
+function mint(address _to, uint _amount) public {
+  totalsupply += _amount;
+  balances[_to] += _amount;
+
+}
+
+//burn
+function burn(address _from, uint _amount ) public {
+  if(_amount<=balances[_from]) {
+  totalsupply -= _amount;
+  balances[_from] -= _amount;
+
+}
+}
+}
